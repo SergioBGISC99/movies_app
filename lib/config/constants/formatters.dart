@@ -6,8 +6,9 @@ class Formatters {
 
   static String weekday = getWeekdayName(now.weekday);
   static String month = getMonthName(now.month);
+  static String day = getDayTermination(now.day);
 
-  static String formattedDate = "$weekday, $month";
+  static String formattedDate = "$weekday, $month ${now.day}$day";
 }
 
 String getWeekdayName(int day) {
@@ -59,5 +60,22 @@ String getMonthName(int month) {
       return Month.diciembre.nombre;
     default:
       return '';
+  }
+}
+
+String getDayTermination(int day) {
+  switch (day) {
+    case 1:
+    case 21:
+    case 31:
+      return 'st';
+    case 2:
+    case 22:
+      return 'nd';
+    case 3:
+    case 23:
+      return 'td';
+    default:
+      return 'th';
   }
 }
