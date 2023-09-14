@@ -3,6 +3,7 @@ import 'package:cinemapedia/config/helpers/human_formats.dart';
 import 'package:flutter/material.dart';
 //Paquetes
 import 'package:animate_do/animate_do.dart';
+import 'package:go_router/go_router.dart';
 //Proyecto
 import '../../../domain/entities/movie.dart';
 
@@ -179,7 +180,9 @@ class _Poster extends StatelessWidget {
                 )),
               );
             }
-            return FadeIn(child: child);
+            return GestureDetector(
+                onTap: () => context.push('/movie/${movie.id}'),
+                child: FadeIn(child: child));
           },
         ),
       ),
