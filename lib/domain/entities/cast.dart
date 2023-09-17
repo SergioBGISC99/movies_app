@@ -1,10 +1,10 @@
-class Cast {
+class Actor {
   final int id;
   final String name;
   final String profilePath;
   final String? character;
 
-  Cast(
+  Actor(
       {required this.id,
       required this.name,
       required this.profilePath,
