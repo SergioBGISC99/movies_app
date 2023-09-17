@@ -10,7 +10,7 @@ typedef SearchMoviesCallback = Future<List<Movie>> Function(String query);
 
 class SearchMovieDelegate extends SearchDelegate<Movie?> {
   final SearchMoviesCallback movieCallback;
-  final List<Movie> initialMovies;
+  List<Movie> initialMovies;
 
   StreamController<List<Movie>> debouncedMovies = StreamController.broadcast();
   Timer? _debounceTimer;
@@ -22,12 +22,31 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
     debouncedMovies.close();
   }
 
-  void _onQueryChange(String query) {
+  void _onQueryChanged(String query) {
     if (_debounceTimer?.isActive ?? false) _debounceTimer!.cancel();
     _debounceTimer = Timer(const Duration(milliseconds: 500), () async {
       final movies = await movieCallback(query);
+      initialMovies = movies;
       debouncedMovies.add(movies);
     });
+  }
+
+  Widget buildData() {
+    return StreamBuilder(
+        stream: debouncedMovies.stream,
+        initialData: initialMovies,
+        builder: (context, snapshot) {
+          final movies = snapshot.data ?? [];
+          return ListView.builder(
+              itemCount: movies.length,
+              itemBuilder: (context, index) => _MovieSearchItem(
+                    movie: movies[index],
+                    onMovieSelected: (context, movie) {
+                      clearStreams();
+                      close(context, movie);
+                    },
+                  ));
+        });
   }
 
   @override
@@ -55,28 +74,14 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return const Text('buildResults');
+    return buildData();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    _onQueryChange(query);
+    _onQueryChanged(query);
 
-    return StreamBuilder(
-        stream: debouncedMovies.stream,
-        initialData: initialMovies,
-        builder: (context, snapshot) {
-          final movies = snapshot.data ?? [];
-          return ListView.builder(
-              itemCount: movies.length,
-              itemBuilder: (context, index) => _MovieSearchItem(
-                    movie: movies[index],
-                    onMovieSelected: (context, movie) {
-                      clearStreams();
-                      close(context, movie);
-                    },
-                  ));
-        });
+    return buildData();
   }
 }
 
