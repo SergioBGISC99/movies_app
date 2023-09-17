@@ -13,8 +13,6 @@ class Formatters {
 
 String getWeekdayName(int day) {
   switch (day) {
-    case 0:
-      return Weekday.domingo.nombre;
     case 1:
       return Weekday.lunes.nombre;
     case 2:
@@ -27,6 +25,8 @@ String getWeekdayName(int day) {
       return Weekday.viernes.nombre;
     case 6:
       return Weekday.sabado.nombre;
+    case 7:
+      return Weekday.domingo.nombre;
     default:
       return '';
   }
@@ -34,29 +34,29 @@ String getWeekdayName(int day) {
 
 String getMonthName(int month) {
   switch (month) {
-    case 0:
-      return Month.enero.nombre;
     case 1:
-      return Month.febrero.nombre;
+      return Month.enero.nombre;
     case 2:
-      return Month.marzo.nombre;
+      return Month.febrero.nombre;
     case 3:
-      return Month.abril.nombre;
+      return Month.marzo.nombre;
     case 4:
-      return Month.mayo.nombre;
+      return Month.abril.nombre;
     case 5:
-      return Month.junio.nombre;
+      return Month.mayo.nombre;
     case 6:
-      return Month.julio.nombre;
+      return Month.junio.nombre;
     case 7:
-      return Month.agosto.nombre;
+      return Month.julio.nombre;
     case 8:
-      return Month.septiembre.nombre;
+      return Month.agosto.nombre;
     case 9:
-      return Month.octubre.nombre;
+      return Month.septiembre.nombre;
     case 10:
-      return Month.noviembre.nombre;
+      return Month.octubre.nombre;
     case 11:
+      return Month.noviembre.nombre;
+    case 12:
       return Month.diciembre.nombre;
     default:
       return '';
