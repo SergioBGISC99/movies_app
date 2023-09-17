@@ -16,7 +16,7 @@ class MovieMapper {
       popularity: moviedb.popularity,
       posterPath: moviedb.posterPath != ''
           ? 'https://image.tmdb.org/t/p/w500${moviedb.posterPath}'
-          : 'no-poster',
+          : 'https://www.content.numetro.co.za/ui_images/no_poster.png',
       releaseDate:
           moviedb.releaseDate != null ? moviedb.releaseDate! : DateTime.now(),
       title: moviedb.title,
