@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/entities/movie.dart';
-import '../provider.dart';
+import '../providers.dart';
 
 final searchQueryProvider = StateProvider<String>((ref) => '');
 

@@ -74,7 +74,7 @@ String getDayTermination(int day) {
       return 'nd';
     case 3:
     case 23:
-      return 'td';
+      return 'rd';
     default:
       return 'th';
   }
