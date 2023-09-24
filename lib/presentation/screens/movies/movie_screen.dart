@@ -65,6 +65,16 @@ class _CustomSliverAppBar extends StatelessWidget {
       backgroundColor: Colors.black,
       expandedHeight: size.height * .7,
       foregroundColor: Colors.white,
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.favorite_border_rounded),
+          // icon: Icon(
+          //   Icons.favorite_rounded,
+          //   color: Colors.red,
+          // ),
+        )
+      ],
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         background: Stack(
@@ -79,23 +89,20 @@ class _CustomSliverAppBar extends StatelessWidget {
                 },
               ),
             ),
-            const SizedBox.expand(
-              child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          stops: [0.0, 0.3],
-                          colors: [Colors.black87, Colors.transparent]))),
-            ),
-            const SizedBox.expand(
-              child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          stops: [0.7, 1.0],
-                          colors: [Colors.transparent, Colors.black87]))),
-            )
+            const _CustomSizedBox(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomLeft,
+                stops: [0.0, 0.2],
+                colors: [Colors.black54, Colors.transparent]),
+            const _CustomSizedBox(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.8, 1.0],
+                colors: [Colors.transparent, Colors.black54]),
+            const _CustomSizedBox(
+                begin: Alignment.topRight,
+                stops: [0.0, 0.3],
+                colors: [Colors.black54, Colors.transparent]),
           ],
         ),
       ),
@@ -271,6 +278,29 @@ class _CastByMovie extends ConsumerWidget {
               ),
             );
           }),
+    );
+  }
+}
+
+class _CustomSizedBox extends StatelessWidget {
+  final AlignmentGeometry begin;
+  final AlignmentGeometry end;
+  final List<double> stops;
+  final List<Color> colors;
+
+  const _CustomSizedBox(
+      {required this.begin,
+      this.end = Alignment.centerRight,
+      required this.stops,
+      required this.colors});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox.expand(
+      child: DecoratedBox(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: begin, end: end, stops: stops, colors: colors))),
     );
   }
 }
