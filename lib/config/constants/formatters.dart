@@ -1,5 +1,4 @@
-import 'package:cinemapedia/config/enums/months.dart';
-import 'package:cinemapedia/config/enums/weekdays.dart';
+import '../config.dart';
 
 class Formatters {
   static DateTime now = DateTime.now();

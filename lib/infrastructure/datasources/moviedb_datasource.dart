@@ -1,5 +1,5 @@
 //*Config
-import 'package:cinemapedia/config/constants/environment.dart';
+import '../../config/config.dart';
 //*Domain
 import 'package:cinemapedia/domain/datasources/movies_datasource.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
