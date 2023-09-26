@@ -1,9 +1,8 @@
-import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../domain/entities/movie.dart';
+import '../../providers/providers.dart';
+import '../../../domain/domain.dart';
 import '../../delegates/search_movie_delegate.dart';
 
 class CustomAppbar extends ConsumerWidget {

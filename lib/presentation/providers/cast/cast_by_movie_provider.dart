@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../domain/entities/actor.dart';
+import '../../../domain/domain.dart';
 import 'cast_repository_provider.dart';
 
 final castByMovieProvider =

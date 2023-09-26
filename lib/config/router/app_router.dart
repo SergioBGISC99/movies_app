@@ -24,7 +24,7 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
         StatefulShellBranch(routes: [
           GoRoute(
               path: '/categories',
-              builder: (context, state) => const CategoriesView())
+              builder: (context, state) => const PopularView())
         ]),
         StatefulShellBranch(routes: [
           GoRoute(

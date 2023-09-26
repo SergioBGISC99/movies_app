@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../config/constants/formatters.dart';
-import '../../../domain/entities/movie.dart';
+import '../../../config/config.dart';
+import '../../../domain/domain.dart';
 import '../../providers/providers.dart';
 import '../../widgets/widgets.dart';
 
