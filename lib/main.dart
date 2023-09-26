@@ -1,5 +1,6 @@
 //*Flutter
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 //*Config
 import 'config/config.dart';
 //*Paquetes
@@ -16,6 +17,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting();
     return MaterialApp.router(
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,

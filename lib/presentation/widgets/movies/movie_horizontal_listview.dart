@@ -166,24 +166,14 @@ class _Poster extends StatelessWidget {
       width: 150,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: Image.network(
-          movie.posterPath,
-          fit: BoxFit.cover,
-          width: 150,
-          loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress != null) {
-              return const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Center(
-                    child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                )),
-              );
-            }
-            return GestureDetector(
-                onTap: () => context.push('/movie/${movie.id}'),
-                child: FadeIn(child: child));
-          },
+        child: GestureDetector(
+          onTap: () => context.push('/movie/${movie.id}'),
+          child: FadeInImage(
+            height: 220,
+            fit: BoxFit.cover,
+            placeholder: const AssetImage('assets/loaders/bottle-loader.gif'),
+            image: NetworkImage(movie.backdropPath),
+          ),
         ),
       ),
     );
